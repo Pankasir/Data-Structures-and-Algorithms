@@ -1,0 +1,31 @@
+#include <iostream>
+#include <vector>
+
+int binarySearch(std::vector<int> arr, int target) {
+    int low = 0;
+    int high = arr.size() - 1;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        
+        if (arr[mid] == target)
+            return mid;
+        else if (arr[mid] < target)
+            low = mid + 1;
+        else
+            high = mid - 1;
+    }
+    return -1;
+}
+
+// Usage
+int main() {
+    std::vector<int> myVec = {2, 4, 7, 10, 15, 20};
+    int target = 7;
+    int result = binarySearch(myVec, target);
+    if (result != -1)
+        std::cout << "Element found at index " << result << std::endl;
+    else
+        std::cout << "Element not found" << std::endl;
+    return 0;
+}
